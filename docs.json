@@ -17,9 +17,7 @@
             "group": "Getting Started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
-            ]
+              "quickstart"            ]
           },
           {
             "group": "Create an AI Agent",
