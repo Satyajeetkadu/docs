@@ -22,8 +22,8 @@
           {
             "group": "Create an AI Agent",
             "pages": [
-              "Agents/Workflow-AI-Agent",
-              "Agents/Knowledge-AI-Agent"
+              "Agents/Workflow",
+              "Agents/Knowledge"
             ]
           },
           
