@@ -35,8 +35,8 @@
     }
   },
   "logo": {
-    "light": "/logo/supervitylogo.svg",
-    "dark": "/logo/supervitylogo.svg"
+    "light": "/logo/SuperLogo.svg",
+    "dark": "/logo/SuperLogo.svg"
   },
   "navbar": {
     "links": [
