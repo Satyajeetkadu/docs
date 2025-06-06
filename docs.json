@@ -2,6 +2,9 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "Supervity Docs",
+  "modeToggle": {
+    "default": "light",
+    "isHidden": true},
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
