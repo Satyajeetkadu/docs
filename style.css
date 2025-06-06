@@ -1,0 +1,66 @@
+/* Hide "Powered by Mintlify" text */
+footer [class*="powered"], 
+footer [class*="mintlify"],
+footer [class*="Mintlify"],
+footer a[href*="mintlify.com"] {
+  display: none !important;
+}
+
+/* Fallback approach to hide specific parts of footer */
+footer div:has(a[href*="mintlify.com"]) {
+  display: none !important;
+}
+
+/* Alternative: you can uncomment this to hide the entire footer if needed */
+/* footer {
+  display: none !important;
+} */
+
+/* Hide the dark mode toggle button */
+[data-theme-toggle],
+.theme-toggle,
+button[aria-label*="theme"],
+button[aria-label*="dark"],
+button[aria-label*="light"],
+[class*="theme-toggle"],
+[class*="dark-mode-toggle"],
+button[class*="theme"],
+button[title*="theme"],
+button[title*="dark"],
+button[title*="light"] {
+  display: none !important;
+}
+
+/* Hide theme switcher in header/navbar */
+#navbar button[class*="theme"],
+header button[class*="theme"],
+.navbar button[class*="theme"] {
+  display: none !important;
+}
+
+/* Hide any moon/sun icons commonly used for theme toggles */
+button svg[class*="moon"],
+button svg[class*="sun"],
+button [class*="moon"],
+button [class*="sun"] {
+  display: none !important;
+}
+
+/* Remove all toggle buttons */
+button[class*="toggle"],
+[class*="toggle-button"],
+.toggle,
+.expandable-toggle,
+.tab-toggle,
+.server-toggle,
+[data-toggle],
+[aria-expanded] {
+  display: none !important;
+}
+
+/* Hide specific UI toggles */
+.editor-toolbar [class*="toggle"],
+.api-playground [class*="toggle"],
+.navigation [class*="toggle"] {
+  display: none !important;
+} 
