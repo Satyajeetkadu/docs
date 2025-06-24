@@ -31,7 +31,8 @@
               "Agents/Workflow",
               "Agents/Knowledge",
               "Agents/cobrowsing",
-              "Agents/roboticautomation"
+              "Agents/roboticautomation",
+              "Agents/processdiscovery"
             ]
           }
         ]
