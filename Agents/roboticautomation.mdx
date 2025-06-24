@@ -1,40 +1,57 @@
 ---
-title: "Robotic Automation Agent"
+title: "Robotic Automation Agent (RAA)"
 description: "A Robotic Automation Agent (RAA) in Supervity is a no-code AI Coach that enables teams to automate repetitive digital tasks across desktop and web platforms. Using a visual "show and tell" interface, users can capture, configure, and share automation workflows that function like traditional Robotic Process Automation (RPA) — without writing code."
 ---
 
-### You can choose between two types:
+### RAAs streamline daily workflows like:
 
-- **Web Co-Browsing AI Agent**: Ideal for in-browser guidance across SaaS platforms or websites.
-- **Desktop Co-Browsing AI Agent**: Tailored for desktop-based applications and automations, equivalent to Robotic Process Automation (RPA) with powerful show-and-tell features.
+- Filling web forms
+- Moving data between spreadsheets and apps
+- Sending automated emails
+- Switching between desktop applications
+- Extracting and processing data using AI
 
-With no-code creation, rich UI-based scripting, and integrated AI capabilities, Co-Browsing Agents enable seamless digital enablement for your team or customers — without needing developers to hardcode anything.
+## Types of Robotic Automation Agents
 
-## Step-by-step: Creating a Co-Browsing AI Agent
+There are **three types** of RAAs you can create, each tailored to specific automation use cases:
+
+1. **Web AI Agent**
+   - Automates repetitive tasks across web applications.
+   - Use it to capture and replay actions like logging in, form submission, clicking buttons, etc.
+
+   **Use case:** Filling out HR onboarding forms on internal portals.
+2. **Data Entry AI Agent**
+   - Designed to import data from spreadsheets into any web app.
+   - You demonstrate just one row of entry, and the AI does the rest.
+
+   **Use case:** Uploading bulk leads into a CRM system from Excel.
+3. **Create Your Own (from Scratch)**
+   - A flexible automation builder for both web and desktop tasks.
+   - Choose from a wide range of steps like loops, app controls, file operations, API calls, and more.
+
+   **Use case:** Automating a desktop-to-web process involving screenshots, Excel, and email.
+
+## Step-by-step: Creating a Robotic Automation AI Agent
 
 ### 1. Navigate to AI Agent Creation
 
 - From the Supervity dashboard, click on the **“Create AI Agent”** button on the left sidebar.
 
-### 2. Choose Co-Browsing AI Agent
+### 2. Choose Robotic Automation AI Agent
 
 - You’ll see different AI agent templates.
-- Select **“Co-Browsing AI Agent”** from the list.
+- Select **“Robotic Automation AI Agent”** from the list.
 
-### 3. Select Web or Desktop Agent
+### 3. Choose Template or Start from Scratch
 
-- Choose either:
-  - **Web Co-Browsing AI Agent** — for websites or web apps
-    - Create and share in-app walkthrough AI agents for your organizational web applications to digitally enable your employees, customers, and suppliers. AI Coach can also be connected with a collection of knowledge to answer user queries in natural language.
-  - **Desktop Co-Browsing AI Agent** — for desktop apps or RPA-style interactions
-    - Desktop Co-browsing AI Agent can enable teams to automate repetitive digital tasks on your desktop. Use simple no-code show and tell interface to create and share automations for self or the team. This is equalent to Robotic Process Automation with all powerful desktop automation features.
+- **Web AI Agent**: Starts with web-based actions.
+- **Data Entry AI Agent**: Asks for a spreadsheet and target web app.
+- **Scratch**: Opens a blank canvas.
 
-Then click **Create**.
+### 4. Name Your Agent and Add Steps
 
-### 4. Enter Agent Details
-
-- Fill in your **Agent Name** and **Description**.
-- Click **Next** to proceed.
+- Name your automation and click on **Start** to begin building the workflow.
+- Use the "\+" button to add steps to the flow.
 
 ### 5. Build the Walkthrough
 
@@ -47,5 +64,40 @@ Then click **Create**.
 
 ### 6. Finalize and Publish
 
-- Use the top options to **Play**, **Save**, **Export**, or **Publish** your co-browsing agent.
+- Use the top options to **Play**, **Save**, **Export**, or **Publish** your Robotic Automation AI agent.
 - Once published, the walkthrough can be triggered for users within your product.
+
+## Available Steps in RAA
+
+Below are the key types of steps you can add when creating an agent from scratch:
+
+| Step Type           | Purpose Example                                         |
+| :------------------ | :------------------------------------------------------ |
+| **Add a Skill**     | Reuse existing automation logic as a skill              |
+| **Add Dataset**     | Add spreadsheet input to use in looping data entry      |
+| **Loop**            | Repeat steps for each row or input                      |
+| **Show**            | Record desktop or web action using screen capture       |
+| **Read/Write**      | Handle file, folder, or table actions                   |
+| **Clipboard**       | Copy/paste operations                                   |
+| **Keyboard/Mouse**  | Automate interactions like keystrokes or clicks         |
+| **Service Call**    | Call APIs or backend systems                            |
+| **Outlook Mail**    | Automate email actions via Outlook                      |
+| **Generative AI**   | Use GPT for dynamic content creation or extraction      |
+| **RAG**             | Retrieval-Augmented Generation for query over knowledge |
+| **Try/Catch**       | Add error handling for robust workflows                 |
+| **Switch App**      | Toggle between open apps                                |
+| **Excel**           | Automate spreadsheet operations                         |
+| **Database Action** | Read/write to a connected database                      |
+| **OCR**             | Use Supervity’s OCR to extract data from images/docs    |
+| **S3 Actions**      | Download/upload files to/from Amazon S3                 |
+
+## Integration
+
+Once your Robotic Automation Agent is ready:
+
+- Click the **three dots** (⋮) on the agent card.
+- Select **Integration** to get the script.
+- You’ll see a **JavaScript snippet** that can be embedded into your web app to enable a conversational AI assistant based on this automation.
+- You can even pass query parameters like chat background color, font size, etc.
+
+You can also **access this automation from the sidebar** via **AI Knowledge** after it’s published.
