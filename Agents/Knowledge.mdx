@@ -1,0 +1,70 @@
+---
+title: "Knowledge AI Agents"
+description: "The Knowledge AI Agent enables teams to turn internal knowledge — like documents, spreadsheets, URLs, or videos — into a powerful, searchable, conversational assistant using Retrieval-Augmented Generation (RAG). This allows users to query internal data in natural language and receive accurate, context-aware responses."
+---
+
+## Step-by-step: Creating a Knowledge AI Agent
+
+### 1. **Select the Agent Type**
+
+On the dashboard, click **Create AI Agent** and select the **Knowledge AI Agent** option.
+
+### 2. **Set Collection Type**
+
+- Choose from:
+  - `Unstructured Data (Files)`
+    - Users can upload documents (PDFs, PPTs, Word, spreadsheets, audio, video) to extract valuable insights using advanced AI, enabling accurate, context-rich responses. This seamlessly integrates unstructured data into workflows, helping users and businesses gain actionable insights.
+  - `Database`
+    - Connects to databases to retrieve relevant data and generate natural language, context-aware responses, simplifying complex queries and improving exploration.
+  - `Live Search`
+    - Fetches real-time data from dynamic websites to provide accurate, up-to-date responses to user queries. By integrating live sources, it ensures answers reflect the most current and relevant information available.
+  - `Transcribe`
+    - Uses advanced speech-to-text technology to convert audio and video into text while analyzing it for context, key insights, and relevant information.
+
+### 3. **Fill in Details**
+
+- Add a collection name and description
+- Choose the base language and model (e.g. GPT-4o)
+- Click **Create**
+
+### 4. Upload Knowledge Sources
+
+Once your collection is created, you can upload:
+
+- **Files** (PDF, PPTX, Word, Excel, audio, video) from local device, Google Drive, or SharePoint
+- **URLs** (scrape individual pages or full websites)
+- **Text snippets** manually
+
+Use OCR if needed for image-based documents.
+
+### 5. Set Guardrails
+
+Under the **Guardrails** tab, configure:
+
+- **System Prompt** (instructions for the agent)
+- **Pre-processing instructions**
+- **Additional logic or fallback flows**
+- **Co-browsing agent integration** (if applicable)
+
+### 6. Interact with Your Knowledge Agent
+
+Go to the **Ask AI Agent** tab to start asking questions directly based on the uploaded content. You can toggle **Chat Context** for multi-turn memory.
+
+## Access from Sidebar
+
+Once created, all your Knowledge AI Agents and collections are accessible from the **AI Knowledge** tab in the left sidebar. Here, you can:
+
+- View all your collections
+- Edit or delete them
+- Add new documents or sources
+
+## Integration as Web Chat Bot
+
+By clicking the **three-dot menu** (︙) on any collection card under **AI Knowledge**, and selecting **Integration**, you can:
+
+- **Embed a conversational AI bot** into your website or portal
+- Copy the pre-generated JavaScript snippet
+- Customize appearance and behavior with query parameters\
+  (e.g., `&chatFontSize=20px`, `&chatBackgroundColor=%23fd2000`)
+
+This allows your customers or team to chat with the Knowledge Agent using a branded interface on your site.
