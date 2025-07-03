@@ -78,9 +78,17 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 - **Configuration:**
   - **Step Title:** Generative AI
   - **Task Prompt**: Retrieve the response from the previous step.
-  - **System Prompt:**  Analyze the data retrieved from the previous step. Determine if it contains an **attachment** or **JSON data**.
-    - **Attachment**: Check for any files attached to the email, such as PDFs, images, or documents.
-    - **JSON Data**: Review the body of the email for any embedded JSON structure, which typically appears as a string of key-value pairs (e.g., `{ "key": "value", "key2": "value2" }`).
+  - **System Prompt:**
+
+    \`\`\`
+
+    Analyze the data retrieved from the previous step. Determine if it contains an **attachment** or **JSON data**.
+    - **Attachment**: Check for any files attached to the email, such as PDFs,
+
+      images, or documents.
+    - **JSON Data**: Review the body of the email for any embedded JSON structure,
+
+      which typically appears as a string of key -value pairs (e.g., `{ "key": "value", "key2": "value2" }`).
     - None: respond with "None" if no file or JSON found.
 
     Respond with either "Attachment" or "JSON" or "None".
