@@ -195,4 +195,134 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 - **Configuration:**
   - **Step Title:** Agent Use
   - **Step Description:** Travel Invoice Agent
-  - \*\*Task Prompt: \*\*
+  - **Task Prompt**: Check for "extract.txt" File Existence:
+
+    If the file extract.txt exists in the current directory:
+
+    Load the JSON data from extract.txt.
+
+    Pass the loaded JSON data as the input payload.
+
+    Additionally, identify and pass any PDF and docx files available in the current directory as input.
+
+    Here is the below curl command which accepts input file and input text.
+
+    curl --location 'https://gen-v1.supervity.ai/api/v1/skill/automation/trigger/cmbrfbv0s002a4f1hw0fyaibg/cmbrfbv0s002b4f1hc046iwsz' \\
+
+    --form 'inputFiles=@"/ {all pdf and docx files from current directory, in put files multiple files can be sent so consider all pdf and docx files.}"' \\
+
+    --form 'textArea="{use the JSON data from "extract.txt" file only and not from any other sources}"'
+
+    If extract.txt does not exist:
+
+    Use the "Gen AI JSON" data retrieved from the previous step as the input payload.
+
+#### **Step 4.2: Agent Use – PO Matching Invoice Agent**
+
+- **Purpose:** To trigger the agent that handles invoices associated with a Purchase Order (PO). This agent's logic would typically include matching the invoice details against the corresponding PO in a financial system.
+- **Configuration:**
+  - **Step Title:** Agent Use
+  - **Step Description:** Po Matching Invoice Agent
+  - **Task Prompt: **Check for "extract.txt" File Existence:
+
+    If the file extract.txt exists in the current directory:
+
+    Load the JSON data from extract.txt.
+
+    Pass the loaded JSON data as the input payload.
+
+    Additionally, identify and pass any PDF files available in the current directory as input.
+
+    Here is the below curl command which accepts input file and input text.
+
+    curl --location 'https://gen-v1.supervity.ai/api/v1/skill/automation/trigger/cmbrfaqg100264f1h1yx0zhe0/cmbrfaqg100274f1hvbe5q4xh' \\
+
+    --form 'inputFiles=@"/ {all pdf files from current directory, input files multiple files can be sent so consider all pdf files.}"' \\
+
+    --form 'textArea="{use the JSON data from "extract.txt" file only and not from any other sources}"'
+
+    If extract.txt does not exist:
+
+    Use the "Gen AI JSON" data retrieved from the previous step as the input payload.
+
+#### **Step 4.3: Agent Use – Non PO Invoice Agent**
+
+- **Purpose:** To call the agent that processes invoices that do not have a corresponding Purchase Order, often related to miscellaneous services or ad-hoc purchases.
+- **Configuration:**
+  - **Step Title:** Agent Use
+  - **Step Description:** Non Po Invoice Agent
+  - **Task Prompt:**
+
+    Check for "extract.txt" File Existence:
+
+    If the file extract.txt exists in the current directory:
+
+    Load the JSON data from extract.txt.
+
+    Pass the loaded JSON data as the input payload.
+
+    Additionally, identify and pass any PDF files available in the current directory as input.
+
+    Here is the below curl command which accepts input file and input text.
+
+    curl --location 'https://gen-v1.supervity.ai/api/v1/skill/automation/trigger/cmbrf6yvu001q4f1hicvnad4z/cmbrf6yvu001r4f1hrzo3hfac' \\
+
+    --form 'inputFiles=@"/' (pdf file from current directory)"' \\
+
+    --form 'textArea="{use the JSON data}"'
+
+    If extract.txt does not exist:
+
+    · Use the "Gen AI JSON" data retrieved from the previous step as the input payload.
+
+#### **Step 4.4: Agent Use – Freight Invoice Agent**
+
+- **Purpose:** To engage the agent specialized in handling invoices for shipping, transportation, and logistics costs.
+- **Configuration:**
+  - **Step Title:** Agent Use
+  - **Step Description:** Freight Invoice Agent
+  - **Task Prompt: **If the current directory contains extarct.txt file load the content from extract.txt file, and also pass the pdf attachment available from the current directory.
+
+    If no extract.txt file is available in current directory, use the JSON data from step Gen ai JSON.
+
+#### **Step 4.5: Agent Use – Expense Reimbursement Agent**
+
+- **Purpose:** To run the agent that processes claims for employee-paid expenses that need to be reimbursed by the company.
+- **Configuration:**
+  - **Step Title:** Agent Use
+  - **Step Description:** Expense Reimbursement Agent
+  - **Task Prompt: **If the current directory contains extarct.txt file load the content from extract.txt file, and also pass the pdf attachment available from the current directory.
+
+    If no extract.txt file is available in current directory, use the JSON data from step Gen ai JSON.
+
+#### **Step 4.6: Agent Use – Custom Agent (Miscellaneous)**
+
+- **Purpose:** A catch-all agent to handle invoices that do not fit into the other predefined categories, ensuring all documents are processed.
+- **Configuration:**
+  - **Step Title:** Agent Use
+  - **Step Description:** Custom Agent
+  - **Task Prompt: **Check for "extract.txt" File Existence:
+
+    If the file extract.txt exists in the current directory:
+
+    Load the JSON data from extract.txt.
+
+    Pass the loaded JSON data as the input payload.
+
+    Additionally, identify and pass any PDF files available in the current directory as input.
+
+    Here is the below curl command which accepts input file and input text.
+
+    curl --location 'https://gen-v1.supervity.ai/api/v1/skill/automation/trigger/cmbrf80sa001u4f1hvkwwt5em/cmbrf80sa001v4f1hro5m2sha' \\
+
+    --form 'inputFiles=@"/ {pdf file from current directory}"' \\
+
+    --form 'textArea="{use the JSON data}"'
+
+    If extract.txt does not exist:
+
+    Use the "Gen AI JSON" data retrieved from the previous step as the input payload.
+
+#### **Step 5: End**
+
+- **Purpose:** The terminal node where all successful processing paths (4.1 through 4.6) converge, signifying the completion of the workflow for one incoming invoice.
