@@ -100,7 +100,7 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 ### Step 3.1: **JSON Processing (If JSON is detected)**
 
 - **Purpose:** To analyze the pre-structured JSON data from the email body and classify the invoice into its specific business category.
-- **Configuration**: 
+- **Configuration**:
   - **Step Title** : Generative AI
   - **Step Description:** Gen ai JSON
   - **Task Prompt**: Retrieve the JSON data from the previous step read mail step body.
@@ -153,7 +153,7 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 ### Step 3.3: Send email with Outlook –  (If None is detected)
 
 - **Purpose:** To automatically notify a designated person or system administrator that an email has been received which cannot be processed by the automation. This ensures that no incoming communication is lost and can be reviewed manually.
-- **Configuration**: 
+- **Configuration**:
   - **Step Title:** Send email with Outlook
   - **Step Description:** Sends email
   - **Task Prompt**: send an email to "[sender@email.com](mailto:sender@email.com)"
@@ -188,3 +188,11 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
     - Decision Criteria 4: Freight Invoice
     - Decision Criteria 5: Expense Reimbursement
     - Decision Criteria 6: miscellaneous
+
+#### **Step 4.1: Agent Use – Travel Invoice Agent**
+
+- **Purpose:** To invoke the specialized agent responsible for processing travel-related invoices, such as those for flights, hotels, and meals.
+- **Configuration:**
+  - **Step Title:** Agent Use
+  - **Step Description:** Travel Invoice Agent
+  - \*\*Task Prompt: \*\*
