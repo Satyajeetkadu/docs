@@ -114,10 +114,22 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
   - **Task Prompt**: Retrieve the JSON data from the previous step read mail step body.
   - **System Prompt**: Analyze the below invoice data and determine its type from the following categories:
     - Travel Invoice: This type includes charges for travel-related expenses such as flights, accommodation, meals, and transportation.
-    - PO Matching Invoice: This type matches a Purchase Order (PO) and contains details of goods or services received, with a corresponding PO number.
-    - Non-PO Invoice: This type refers to invoices that do not have an associated Purchase Order and are often related to miscellaneous purchases or services.
-    - Freight Invoice: This type contains charges related to shipping or transportation of goods, including freight costs and any associated fees.
-    - Expense Reimbursement: This type includes costs for travel, meals, or other business-related expenses that were personally paid by the employee and need to be reimbursed by the company.
+    - PO Matching Invoice: This type matches a Purchase Order (PO) 
+
+      and contains details of goods or services received,
+
+      with a corresponding PO number.
+    - Non -PO Invoice: This type refers to invoices that do not have an 
+
+      associated Purchase Order and are often related to miscellaneous
+
+      purchases or services.
+    - Freight Invoice: This type contains charges related to shipping or 
+
+      transportation of goods, including freight costs and any associated fees.
+    - Expense Reimbursement: This type includes costs for travel, meals, or other business-related expenses that were personally paid by the employee 
+
+      and need to be reimbursed by the company.
 
     Note: do not respond anything in bold.
 
@@ -132,7 +144,9 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
   - **Step Title:** Agentic Document Processing
   - **Step Description:** Extracts data
   - **Task Prompt**: Process the PDF files retrieved from the "current directory".
-  - **Explain what data to be extracted**: Extract the line data as list of dictionaries and include all the remaining fields in header data as proper key value pairs.
+  - **Explain what data to be extracted**: Extract the line data as list of dictionaries and 
+
+    include all the remaining fields in header data as proper key value pairs.
 
 ### Step 3.2.2: **General – Save Extracted Data**
 
@@ -151,10 +165,24 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
   - **Task Prompt**: Retrieve the response from the previous step "Extracts data".
   - **System Prompt**: Analyze the below invoice data and determine its type from the following categories:
     - Travel Invoice: This type includes charges for travel-related expenses such as flights, accommodation, meals, and transportation.
-    - PO Matching Invoice: This type matches a Purchase Order (PO) and contains details of goods or services or products received, with a corresponding PO number and Invoice number.
-    - Non PO Invoice: This type refers to invoices that do not have an associated Purchase Order and are often related to miscellaneous purchases or services.
-    - Freight Invoice: This type contains charges related to shipping or transportation of goods, including freight costs and any associated fees.
-    - Expense Reimbursement: This type includes costs for travel, meals, or other business-related expenses that were personally paid by the employee and need to be reimbursed by the company.
+    - PO Matching Invoice: This type matches a Purchase Order (PO) 
+
+      and contains details of goods or services or products received,
+
+      with a corresponding PO number and Invoice number.
+    - Non PO Invoice: This type refers to invoices that do not have an 
+
+      associated Purchase Order and are often related to
+
+      miscellaneous purchases or services.
+    - Freight Invoice: This type contains charges related to shipping or 
+
+      transportation of goods, including freight costs and
+
+      any associated fees.
+    - Expense Reimbursement: This type includes costs for travel, meals,or other business-related expenses that were personally paid by the 
+
+      employee and need to be reimbursed by the company.
 
     Note: do not respond anything in bold.
 
@@ -176,7 +204,9 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 - **Configuration:**
   - **Step Title:** Decision Pathways
   - **Step Description:** decision invoice type
-  - **Condition/Decision Description**: Retrieve the response from the previous step Gen ai Attachment or Gen ai JSON and check if it contains any of the below choices.
+  - **Condition/Decision Description**: Retrieve the response from the previous step Gen ai Attachment 
+
+    or Gen ai JSON and check if it contains any of the below choices.
 
     if "Travel Invoice" in Travel Invoice choice.
 
