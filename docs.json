@@ -32,7 +32,8 @@
               "Agents/Knowledge",
               "Agents/cobrowsing",
               "Agents/roboticautomation",
-              "Agents/processdiscovery"
+              "Agents/processdiscovery",
+              "Agents/Orchestrator"
             ]
           }
         ]
