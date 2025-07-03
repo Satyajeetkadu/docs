@@ -60,4 +60,131 @@ All Orchestrator workflows are built using a visual drag-and-drop editor, and su
 - Tracks obligations and renewals
 - Supports legal, procurement, and compliance teams
 
-## Step-by-Step: Building an Orchestrator Agent
+## Step-by-Step: Building the Orchestrator Multi-Agent System for Invoice Automation
+
+The Invoice Orchestrator is a complex AI Agent workflow that intelligently processes incoming invoices by classifying, routing, extracting, validating, and escalating them based on predefined logic. Here's how it's constructed:
+
+### Step 1: Trigger – **When new email is received on Outlook**
+
+- **Purpose:** To initiate the entire automation workflow the moment a new email arrives in a specified Outlook inbox. This step acts as the entry point for all incoming invoices.
+- **Configuration:**
+  - **Step Title:** When new email is received on Outlook
+  - **Step Description:** Run your workflow whenever a new email is received
+  - **Integration:** Connected to Microsoft Outlook.
+
+### Step 2: Generative AI – **Initial Content Analysis**
+
+- **Purpose:** To analyze the body and attachments of the incoming email to determine its content type. This initial check is crucial for deciding the immediate next action.
+- **Configuration:**
+  - **Step Title:** Generative AI
+  - **Task Prompt: **Retrieve the response from the previous step.
+  - **System Prompt: **Analyze the data retrieved from the previous step. Determine if it contains an **attachment** or **JSON data**.
+    - **Attachment**: Check for any files attached to the email, such as PDFs, images, or documents.
+    - **JSON Data**: Review the body of the email for any embedded JSON structure, which typically appears as a string of key-value pairs (e.g., `{ "key": "value", "key2": "value2" }`).
+    - None: respond with "None" if no file or JSON found.
+
+    Respond with either "Attachment" or "JSON" or "None".
+
+### Step 3: Decision Pathways – **Route by Data Type**
+
+- **Purpose:** To branch the workflow based on the output of the initial content analysis. It directs the process down one of three paths: JSON, Attachment, or None.
+- **Configuration:**
+  - **Step Title:** Decision Pathways
+  - **Step Description:** decision data type
+  - **Condition/Decision Description: **Retrieve the response from the previous step.
+  - **Choices/Decision Criterias:**
+    - Decision Criteria 1: JSON
+    - Decision Criteria 2: Attachment
+    - Decision Criteria 3: None
+
+### Step 3.1: **JSON Processing (If JSON is detected)**
+
+- **Purpose:** To analyze the pre-structured JSON data from the email body and classify the invoice into its specific business category.
+- **Configuration: **
+  - **Step Title : **Generative AI
+  - **Step Description:** Gen ai JSON
+  - **Task Prompt: **Retrieve the JSON data from the previous step read mail step body.
+  - **System Prompt: **Analyze the below invoice data and determine its type from the following categories:
+    - Travel Invoice: This type includes charges for travel-related expenses such as flights, accommodation, meals, and transportation.
+    - PO Matching Invoice: This type matches a Purchase Order (PO) and contains details of goods or services received, with a corresponding PO number.
+    - Non-PO Invoice: This type refers to invoices that do not have an associated Purchase Order and are often related to miscellaneous purchases or services.
+    - Freight Invoice: This type contains charges related to shipping or transportation of goods, including freight costs and any associated fees.
+    - Expense Reimbursement: This type includes costs for travel, meals, or other business-related expenses that were personally paid by the employee and need to be reimbursed by the company.
+
+    Note: do not respond anything in bold.
+
+### Step 3.2: **Attachment Processing (If Attachment is detected)**
+
+**Purpose:** This path is executed when the initial email contains a document attachment (e.g., PDF) but no structured JSON in the body. Its goal is to extract the data from the document and classify it.
+
+### Step 3.2.1: **Agentic Document Processing – Data Extraction**
+
+- **Purpose:** To process unstructured document files using Optical Character Recognition (OCR) and intelligent document processing, converting the visual information into a structured data format.
+- **Configuration:**
+  - **Step Title:** Agentic Document Processing
+  - **Step Description:** Extracts data
+  - **Task Prompt: **Process the PDF files retrieved from the "current directory".
+  - **Explain what data to be extracted: **Extract the line data as list of dictionaries and include all the remaining fields in header data as proper key value pairs.
+
+### Step 3.2.2: **General – Save Extracted Data**
+
+- **Purpose:** To take the structured data output from the previous extraction step and save it into a temporary file (extract.txt). This standardizes the data format for subsequent processing steps.
+- **Configuration:**
+  - **Step Title:** General
+  - **Step Description:** save data
+  - **Task Prompt: **Save the response from previous step "Extracts data"  to "extract.txt" file.
+
+### Step 3.2.3: **Generative AI – Classify from Extracted Text**
+
+- **Purpose:** To analyze the standardized text data (now stored in extract.txt) and determine the specific business category of the invoice (e.g., Travel, PO Matching) to enable correct routing.
+- **Configuration:**
+  - **Step Title:** Generative AI
+  - **Step Description:** Gen ai Attachment
+  - **Task Prompt: **Retrieve the response from the previous step "Extracts data".
+  - **System Prompt: **Analyze the below invoice data and determine its type from the following categories:
+    - Travel Invoice: This type includes charges for travel-related expenses such as flights, accommodation, meals, and transportation.
+    - PO Matching Invoice: This type matches a Purchase Order (PO) and contains details of goods or services or products received, with a corresponding PO number and Invoice number.
+    - Non PO Invoice: This type refers to invoices that do not have an associated Purchase Order and are often related to miscellaneous purchases or services.
+    - Freight Invoice: This type contains charges related to shipping or transportation of goods, including freight costs and any associated fees.
+    - Expense Reimbursement: This type includes costs for travel, meals, or other business-related expenses that were personally paid by the employee and need to be reimbursed by the company.
+
+    Note: do not respond anything in bold.
+
+### Step 3.3: **Send email with Outlook –  **(If None is detected)
+
+- **Purpose:** To automatically notify a designated person or system administrator that an email has been received which cannot be processed by the automation. This ensures that no incoming communication is lost and can be reviewed manually.
+- **Configuration: **
+  - **Step Title:** Send email with Outlook
+  - **Step Description:** Sends email
+  - **Task Prompt: **send an email to "sender@email.com"
+
+    with Subject:No attachment or JSON data found
+
+    Body: NO attachment or JSON data found in the received email
+
+### Step 4: **Decision Pathways – Route to Specialized Agent**
+
+- **Purpose:** This step acts as the primary routing hub for all valid invoices. It takes the invoice type classified by the preceding Generative AI steps and directs the workflow to the appropriate specialized agent for final, targeted processing.
+- **Configuration:**
+  - **Step Title:** Decision Pathways
+  - **Step Description:** decision invoice type
+  - **Condition/Decision Description: **Retrieve the response from the previous step Gen ai Attachment or Gen ai JSON and check if it contains any of the below choices.
+
+    if "Travel Invoice" in Travel Invoice choice.
+
+    if "PO Matching Invoice" in PO Matching Invoice choice.
+
+    if "Non PO Invoice" in Non PO Invoice choice.
+
+    if "Freight Invoice" in Freight Invoice choice.
+
+    if "Expense Reimbursement" in Expense Reimbursement choice.
+
+    Convert into lower case and check.
+  - **Choices/Decision Criterias:**
+    - Decision Criteria 1: Travel Invoice
+    - Decision Criteria 2: PO Matching Invoice
+    - Decision Criteria 3: Non PO Invoice
+    - Decision Criteria 4: Freight Invoice
+    - Decision Criteria 5: Expense Reimbursement
+    - Decision Criteria 6: miscellaneous
