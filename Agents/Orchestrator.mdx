@@ -77,8 +77,8 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 - **Purpose:** To analyze the body and attachments of the incoming email to determine its content type. This initial check is crucial for deciding the immediate next action.
 - **Configuration:**
   - **Step Title:** Generative AI
-  - **Task Prompt: **Retrieve the response from the previous step.
-  - **System Prompt: **Analyze the data retrieved from the previous step. Determine if it contains an **attachment** or **JSON data**.
+  - **Task Prompt**: Retrieve the response from the previous step.
+  - **System Prompt:**  Analyze the data retrieved from the previous step. Determine if it contains an **attachment** or **JSON data**.
     - **Attachment**: Check for any files attached to the email, such as PDFs, images, or documents.
     - **JSON Data**: Review the body of the email for any embedded JSON structure, which typically appears as a string of key-value pairs (e.g., `{ "key": "value", "key2": "value2" }`).
     - None: respond with "None" if no file or JSON found.
@@ -91,7 +91,7 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 - **Configuration:**
   - **Step Title:** Decision Pathways
   - **Step Description:** decision data type
-  - **Condition/Decision Description: **Retrieve the response from the previous step.
+  - **Condition/Decision Description**: Retrieve the response from the previous step.
   - **Choices/Decision Criterias:**
     - Decision Criteria 1: JSON
     - Decision Criteria 2: Attachment
@@ -100,11 +100,11 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 ### Step 3.1: **JSON Processing (If JSON is detected)**
 
 - **Purpose:** To analyze the pre-structured JSON data from the email body and classify the invoice into its specific business category.
-- **Configuration: **
-  - **Step Title : **Generative AI
+- **Configuration**: 
+  - **Step Title** : Generative AI
   - **Step Description:** Gen ai JSON
-  - **Task Prompt: **Retrieve the JSON data from the previous step read mail step body.
-  - **System Prompt: **Analyze the below invoice data and determine its type from the following categories:
+  - **Task Prompt**: Retrieve the JSON data from the previous step read mail step body.
+  - **System Prompt**: Analyze the below invoice data and determine its type from the following categories:
     - Travel Invoice: This type includes charges for travel-related expenses such as flights, accommodation, meals, and transportation.
     - PO Matching Invoice: This type matches a Purchase Order (PO) and contains details of goods or services received, with a corresponding PO number.
     - Non-PO Invoice: This type refers to invoices that do not have an associated Purchase Order and are often related to miscellaneous purchases or services.
@@ -123,8 +123,8 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 - **Configuration:**
   - **Step Title:** Agentic Document Processing
   - **Step Description:** Extracts data
-  - **Task Prompt: **Process the PDF files retrieved from the "current directory".
-  - **Explain what data to be extracted: **Extract the line data as list of dictionaries and include all the remaining fields in header data as proper key value pairs.
+  - **Task Prompt**: Process the PDF files retrieved from the "current directory".
+  - **Explain what data to be extracted**: Extract the line data as list of dictionaries and include all the remaining fields in header data as proper key value pairs.
 
 ### Step 3.2.2: **General – Save Extracted Data**
 
@@ -132,7 +132,7 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 - **Configuration:**
   - **Step Title:** General
   - **Step Description:** save data
-  - **Task Prompt: **Save the response from previous step "Extracts data"  to "extract.txt" file.
+  - **Task Prompt**: Save the response from previous step "Extracts data"  to "extract.txt" file.
 
 ### Step 3.2.3: **Generative AI – Classify from Extracted Text**
 
@@ -140,8 +140,8 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 - **Configuration:**
   - **Step Title:** Generative AI
   - **Step Description:** Gen ai Attachment
-  - **Task Prompt: **Retrieve the response from the previous step "Extracts data".
-  - **System Prompt: **Analyze the below invoice data and determine its type from the following categories:
+  - **Task Prompt**: Retrieve the response from the previous step "Extracts data".
+  - **System Prompt**: Analyze the below invoice data and determine its type from the following categories:
     - Travel Invoice: This type includes charges for travel-related expenses such as flights, accommodation, meals, and transportation.
     - PO Matching Invoice: This type matches a Purchase Order (PO) and contains details of goods or services or products received, with a corresponding PO number and Invoice number.
     - Non PO Invoice: This type refers to invoices that do not have an associated Purchase Order and are often related to miscellaneous purchases or services.
@@ -150,13 +150,13 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 
     Note: do not respond anything in bold.
 
-### Step 3.3: **Send email with Outlook –  **(If None is detected)
+### Step 3.3: Send email with Outlook –  (If None is detected)
 
 - **Purpose:** To automatically notify a designated person or system administrator that an email has been received which cannot be processed by the automation. This ensures that no incoming communication is lost and can be reviewed manually.
-- **Configuration: **
+- **Configuration**: 
   - **Step Title:** Send email with Outlook
   - **Step Description:** Sends email
-  - **Task Prompt: **send an email to "sender@email.com"
+  - **Task Prompt**: send an email to "[sender@email.com](mailto:sender@email.com)"
 
     with Subject:No attachment or JSON data found
 
@@ -168,7 +168,7 @@ The Invoice Orchestrator is a complex AI Agent workflow that intelligently proce
 - **Configuration:**
   - **Step Title:** Decision Pathways
   - **Step Description:** decision invoice type
-  - **Condition/Decision Description: **Retrieve the response from the previous step Gen ai Attachment or Gen ai JSON and check if it contains any of the below choices.
+  - **Condition/Decision Description**: Retrieve the response from the previous step Gen ai Attachment or Gen ai JSON and check if it contains any of the below choices.
 
     if "Travel Invoice" in Travel Invoice choice.
 
